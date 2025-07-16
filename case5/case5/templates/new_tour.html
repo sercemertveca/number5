@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Новый тур{% endblock %}
+
+{% block content %}
+<h2>Добавить новый тур</h2>
+<form method="POST" action="{{ url_for('new_tour') }}">
+  <div class="mb-3">
+    <label for="title" class="form-label">Название тура *</label>
+    <input type="text" class="form-control" id="title" name="title" required />
+  </div>
+  <div class="mb-3">
+    <label for="cost" class="form-label">Стоимость (в рублях)</label>
+    <input type="number" step="0.01" class="form-control" id="cost" name="cost" />
+  </div>
+  <div class="mb-3">
+    <label for="places" class="form-label">Места для посещения</label>
+    <textarea class="form-control" id="places" name="places" rows="3"></textarea>
+  </div>
+  <div class="mb-3">
+    <label for="heritage_places" class="form-label">Места культурного наследия</label>
+    <textarea class="form-control" id="heritage_places" name="heritage_places" rows="3"></textarea>
+  </div>
+  <div class="mb-3">
+    <label for="date_from" class="form-label">Дата начала</label>
+    <input type="date" class="form-control" id="date_from" name="date_from" />
+  </div>
+  <div class="mb-3">
+    <label for="date_to" class="form-label">Дата окончания</label>
+    <input type="date" class="form-control" id="date_to" name="date_to" />
+  </div>
+  <button type="submit" class="btn btn-primary">Сохранить</button>
+  <a href="{{ url_for('my_tours') }}" class="btn btn-secondary ms-2">Отмена</a>
+</form>
+{% endblock %}

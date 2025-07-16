@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Мои туры{% endblock %}
+
+{% block content %}
+<h2>Мои туры</h2>
+<a href="{{ url_for('new_tour') }}" class="btn btn-success mb-3">Добавить тур</a>
+{% if tours %}
+  <ul class="list-group">
+    {% for tour in tours %}
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <a href="{{ url_for('tour_detail', tour_id=tour['id']) }}">{{ tour['title'] }}</a>
+        <span>{{ tour['date_from'] }} — {{ tour['date_to'] }}</span>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>Вы ещё не добавили ни одного тура.</p>
+{% endif %}
+{% endblock %}

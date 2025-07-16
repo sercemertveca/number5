@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}{{ tour['title'] }}{% endblock %}
+
+{% block content %}
+<h2>{{ tour['title'] }}</h2>
+
+<p><strong>Автор:</strong> {{ tour['login'] }}</p>
+<p><strong>Период:</strong> {{ tour['date_from'] or 'Не указано' }} — {{ tour['date_to'] or 'Не указано' }}</p>
+<p><strong>Стоимость:</strong> {{ tour['cost'] if tour['cost'] else 'Не указана' }} ₽</p>
+
+{% if tour['places'] %}
+  <h5>Места для посещения:</h5>
+  <p>{{ tour['places'] }}</p>
+{% endif %}
+
+{% if tour['heritage_places'] %}
+  <h5>Места культурного наследия:</h5>
+  <p>{{ tour['heritage_places'] }}</p>
+{% endif %}
+
+<a href="{{ url_for('tours') }}" class="btn btn-secondary mt-3">Назад к турам</a>
+{% endblock %}

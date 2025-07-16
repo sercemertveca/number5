@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Все туры{% endblock %}
+
+{% block content %}
+<h2>Все туры</h2>
+{% if tours %}
+  <div class="list-group">
+    {% for tour in tours %}
+      <a href="{{ url_for('tour_detail', tour_id=tour['id']) }}" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">{{ tour['title'] }}</h5>
+          <small>{{ tour['date_from'] }} — {{ tour['date_to'] }}</small>
+        </div>
+        <p class="mb-1">Стоимость: {{ tour['cost'] if tour['cost'] else 'Не указана' }} ₽</p>
+        <small>Автор: {{ tour['login'] }}</small>
+      </a>
+    {% endfor %}
+  </div>
+{% else %}
+  <p>Туров пока нет.</p>
+{% endif %}
+{% endblock %}
